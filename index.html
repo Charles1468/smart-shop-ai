@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+
+    <title>Smart Shop AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- HEADER -->
+        <header class="top-header">
+            <div class="brand">
+                <span class="brand-icon">S</span>
+                <div>
+                    <h1>SMART SHOP AI</h1>
+                    <small>YOUR BUSINESS. UNDER CONTROL.</small>
+                </div>
+            </div>
+
+            <button id="menuButton" class="menu-button">
+                ☰
+            </button>
+        </header>
+
+        <!-- TERMS AND CONDITIONS -->
+        <main>
+
+            <section id="termsScreen" class="screen active">
+                <div class="welcome-content">
+                    <p class="eyebrow">WELCOME TO SMART SHOP AI</p>
+
+                    <h2>Run your business.<br>
+                    We'll handle the paperwork.</h2>
+
+                    <p>
+                        Manage sales, stock, expenses, debts,
+                        suppliers and your business operations
+                        from one platform.
+                    </p>
+
+                    <div class="terms-document">
+                        <h3>Terms and Conditions</h3>
+                        <p>
+                            By creating an account or signing in,
+                            you agree to the platform's Terms and
+                            Conditions and Privacy Policy.
+                        </p>
+
+                        <a href="#" id="termsLink">
+                            Read Terms and Conditions
+                        </a>
+
+                        <a href="#" id="privacyLink">
+                            Read Privacy Policy
+                        </a>
+                    </div>
+
+                    <label class="agreement">
+                        <input type="checkbox" id="acceptTerms">
+                        <span>
+                            I have read and agree to the Terms
+                            and Conditions and Privacy Policy.
+                        </span>
+                    </label>
+
+                    <button id="continueButton" disabled>
+                        Continue
+                    </button>
+                </div>
+            </section>
+
+            <!-- WELCOME / SIGN IN -->
+            <section id="welcomeScreen" class="screen">
+                <div class="welcome-content">
+                    <p class="eyebrow">SMART SHOP AI</p>
+                    <h2>Welcome back.</h2>
+                    <p>Manage your business intelligently.</p>
+
+                    <button id="showLoginButton">
+                        Sign In
+                    </button>
+
+                    <button id="showRegisterButton"
+                            class="secondary-button">
+                        Create Account
+                    </button>
+                </div>
+            </section>
+
+            <!-- SIGN IN -->
+            <section id="loginScreen" class="screen">
+                <div class="form-content">
+                    <button class="back-button" data-back="welcomeScreen">
+                        ← Back
+                    </button>
+
+                    <h2>Sign In</h2>
+                    <p>Access your business account.</p>
+
+                    <label>Email or Phone Number</label>
+                    <input type="text" id="loginIdentity"
+                           placeholder="Enter email or phone">
+
+                    <label>Password</label>
+                    <div class="password-field">
+                        <input type="password" id="loginPassword"
+                               placeholder="Enter password">
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="loginPassword">
+                            Show
+                        </button>
+                    </div>
+
+                    <a href="#" id="forgotPasswordLink">
+                        Forgot password?
+                    </a>
+
+                    <button id="loginButton">Sign In</button>
+                </div>
+            </section>
+
+            <!-- REGISTRATION -->
+            <section id="registerScreen" class="screen">
+                <div class="form-content">
+                    <button class="back-button" data-back="welcomeScreen">
+                        ← Back
+                    </button>
+
+                    <p class="eyebrow">CREATE YOUR ACCOUNT</p>
+                    <h2>Personal Information</h2>
+                    <p>Step 1 of 3</p>
+
+                    <label>Full Name</label>
+                    <input type="text" id="fullName"
+                           placeholder="Your full name">
+
+                    <label>Email Address</label>
+                    <input type="email" id="email"
+                           placeholder="Your email address">
+
+                    <label>Country</label>
+                    <input type="text" id="countrySearch"
+                           placeholder="Search for your country">
+
+                    <div id="countryResults"></div>
+
+                    <label>Phone Number</label>
+                    <div class="phone-field">
+                        <span id="dialCode">+234</span>
+                        <input type="tel" id="phone"
+                               placeholder="Phone number">
+                    </div>
+
+                    <label>Password</label>
+                    <div class="password-field">
+                        <input type="password" id="password"
+                               placeholder="Create password">
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="password">
+                            Show
+                        </button>
+                    </div>
+
+                    <label>Confirm Password</label>
+                    <div class="password-field">
+                        <input type="password" id="confirmPassword"
+                               placeholder="Confirm password">
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="confirmPassword">
+                            Show
+                        </button>
+                    </div>
+
+                    <button id="personalNextButton">
+                        Continue
+                    </button>
+                </div>
+            </section>
+
+            <!-- BUSINESS INFORMATION -->
+            <section id="businessScreen" class="screen">
+                <div class="form-content">
+                    <button class="back-button"
+                            data-back="registerScreen">
+                        ← Back
+                    </button>
+
+                    <h2>Business Information</h2>
+                    <p>Step 2 of 3</p>
+
+                    <label>Business Name</label>
+                    <input type="text" id="businessName"
+                           placeholder="Enter business name">
+
+                    <label>Business Type</label>
+                    <select id="businessType">
+                        <option value="">Select business type</option>
+                        <option>Retail Shop</option>
+                        <option>POS Business</option>
+                        <option>Wholesaler</option>
+                        <option>Distributor</option>
+                        <option>Manufacturer</option>
+                        <option>Supermarket</option>
+                        <option>Online Store</option>
+                        <option>Other</option>
+                    </select>
+
+                    <label>CAC Registration Number (Optional)</label>
+                    <input type="text" id="cacNumber"
+                           placeholder="Enter CAC number if available">
+
+                    <button id="businessNextButton">
+                        Continue
+                    </button>
+                </div>
+            </section>
+
+            <!-- BUSINESS ROLES -->
+            <section id="rolesScreen" class="screen">
+                <div class="form-content">
+                    <button class="back-button"
+                            data-back="businessScreen">
+                        ← Back
+                    </button>
+
+                    <h2>Your Business Roles</h2>
+                    <p>Step 3 of 3</p>
+
+                    <label>
+                        <input type="checkbox" value="owner">
+                        Business Owner
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="retailer">
+                        Retail Trader
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="pos">
+                        POS Operator
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="wholesaler">
+                        Wholesaler
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="distributor">
+                        Distributor
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="manufacturer">
+                        Manufacturer
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="supplier">
+                        Supplier
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="buyer">
+                        Buyer
+                    </label>
+
+                    <button id="reviewButton">
+                        Review Registration
+                    </button>
+                </div>
+            </section>
+
+<!-- REGISTRATION REVIEW -->
+<section id="reviewScreen" class="screen">
+    <div class="form-content">
+
+        <button class="back-button" data-back="rolesScreen">
+            ← Back
+        </button>
+
+        <p class="eyebrow">FINAL REGISTRATION STEP</p>
+
+        <h2>Review Your Information</h2>
+
+        <p>Please check your details before submitting.</p>
+
+        <div class="review-card">
+            <h3>Personal Information</h3>
+            <p><strong>Full Name</strong></p>
+            <span id="reviewName">Not provided</span>
+
+            <p><strong>Email Address</strong></p>
+            <span id="reviewEmail">Not provided</span>
+
+            <p><strong>Country</strong></p>
+            <span id="reviewCountry">Not selected</span>
+
+            <p><strong>Phone Number</strong></p>
+            <span id="reviewPhone">Not provided</span>
+        </div>
+
+        <div class="review-card">
+            <h3>Business Information</h3>
+            <p><strong>Business Name</strong></p>
+            <span id="reviewBusiness">Not provided</span>
+
+            <p><strong>Business Type</strong></p>
+            <span id="reviewBusinessType">Not selected</span>
+
+            <p><strong>CAC Number</strong></p>
+            <span id="reviewCAC">Not provided</span>
+        </div>
+
+        <div class="review-card">
+            <h3>Business Roles</h3>
+            <div id="reviewRoles">No roles selected</div>
+        </div>
+
+        <button id="submitRegistrationButton">
+            Submit Registration
+        </button>
+
+    </div>
+</section>
+
+            <!-- DASHBOARD -->
+            <section id="dashboardScreen" class="screen">
+                <div class="dashboard-content">
+                    <p class="eyebrow">YOUR BUSINESS DASHBOARD</p>
+                    <h2>Welcome to Smart Shop AI.</h2>
+
+                    <div class="dashboard-grid">
+                        <button>Sales</button>
+                        <button>Purchases</button>
+                        <button>Inventory</button>
+                        <button>Expenses</button>
+                        <button>Customers & Debts</button>
+                        <button>POS Management</button>
+                        <button>Marketplace</button>
+                        <button>Suppliers</button>
+                        <button>Orders</button>
+                        <button>AI Assistant</button>
+                        <button>Reports</button>
+                        <button>Business History</button>
+                        <button>Company Management</button>
+                        <button>Staff & Branches</button>
+                        <button>Notifications</button>
+                        <button>Settings</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
