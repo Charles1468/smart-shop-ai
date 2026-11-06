@@ -11,6 +11,8 @@ import {
     linkWithPhoneNumber
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 
+import { parsePhoneNumberFromString } from "https://esm.sh/libphonenumber-js@1.12.36";
+
 /* =========================================
    SMART SHOP AI — VERSION 1
    Application navigation and interactions
@@ -127,7 +129,7 @@ document.querySelectorAll(".password-toggle").forEach(function (button) {
    ISO 3166-1 country dataset
 ----------------------------------------- */
 
-const COUNTRY_DATA_URL =
+COUNTRY_DATA_URL =
     "https://staticdata.dev/v1/countries.json";
 
 let countries = [];
@@ -424,17 +426,26 @@ document.getElementById("submitRegistrationButton")
             return;
         }
 
-        const phoneDigits = phone.replace(/[\s-]/g, "");
+        const phoneInput = phone.trim().replace(/[^\d+]/g, "");
 
-        const phoneNumber =
-            selectedCountry.callingCode + phoneDigits;
+const parsedPhone = parsePhoneNumberFromString(
+    phoneInput,
+    selectedCountry.alpha2
+);
 
-        if (!/^\+[1-9]\d{7,14}$/.test(phoneNumber)) {
-            showMessage(
-                "Please check your phone number and country calling code."
-            );
-            return;
-        }
+if (
+    !parsedPhone ||
+    !parsedPhone.isValid() ||
+    parsedPhone.country !== selectedCountry.alpha2
+) {
+    showMessage(
+        "This phone number is not valid for the selected country. " +
+        "Please check your country and phone number."
+    );
+    return;
+}
+
+const phoneNumber = parsedPhone.number;
 
         const registrationData = {
             fullName: fullName,
