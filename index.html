@@ -335,6 +335,67 @@
     </div>
 </section>
 
+       <!-- EMAIL AND PHONE VERIFICATION -->
+<section id="verificationScreen" class="screen">
+    <div class="form-content">
+
+        <p class="eyebrow">SECURE ACCOUNT VERIFICATION</p>
+
+        <h2>Verify Your Account</h2>
+
+        <p id="verificationStatus">
+            Your account needs email and phone verification.
+        </p>
+
+        <!-- EMAIL VERIFICATION -->
+        <div class="review-card">
+            <h3>Email Verification</h3>
+
+            <p>
+                Check your email inbox and click the verification
+                link sent by Smart Shop AI.
+            </p>
+
+            <button type="button" id="checkEmailVerificationButton">
+                I Have Verified My Email
+            </button>
+        </div>
+
+        <!-- PHONE VERIFICATION -->
+        <div id="phoneVerificationArea" class="review-card" hidden>
+
+            <h3>Phone Verification</h3>
+
+            <p>Verify your phone number using the SMS code.</p>
+
+            <div id="recaptcha-container"></div>
+
+            <button type="button" id="sendPhoneCodeButton">
+                Send SMS Verification Code
+            </button>
+
+            <label for="phoneVerificationCode">
+                Enter SMS Verification Code
+            </label>
+
+            <input
+                type="text"
+                id="phoneVerificationCode"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                maxlength="6"
+                placeholder="Enter 6-digit code"
+            >
+
+            <button type="button" id="verifyPhoneCodeButton">
+                Verify Phone Number
+            </button>
+
+        </div>
+
+    </div>
+</section>
+          
             <!-- DASHBOARD -->
             <section id="dashboardScreen" class="screen">
                 <div class="dashboard-content">
