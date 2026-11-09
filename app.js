@@ -1,6 +1,9 @@
 
 import { auth, db } from "./firebase-config.js";
 
+import { parsePhoneNumberFromString } 
+    from "https://esm.sh/libphonenumber-js@1.12.36";
+
 /* =========================================
    SMART SHOP AI — VERSION 1
    Application navigation and interactions
@@ -231,6 +234,9 @@ countrySearch.addEventListener("focus", function () {
 });
 
 countrySearch.addEventListener("input", function () {
+    selectedCountry = null;
+    document.getElementById("dialCode").textContent = "";
+
     if (countryDataReady) {
         renderCountries(countrySearch.value);
     } else {
@@ -265,10 +271,23 @@ document.getElementById("personalNextButton").addEventListener("click", function
         return;
     }
 
-    if (!/^[0-9]{5,15}$/.test(phone.replace(/[\s-]/g, ""))) {
-        showMessage("Please enter a valid phone number.");
-        return;
-    }
+    
+const parsedPhone = parsePhoneNumberFromString(
+    phone,
+    selectedCountry.alpha2
+);
+
+if (
+    !parsedPhone ||
+    !parsedPhone.isValid() ||
+    parsedPhone.country !== selectedCountry.alpha2
+) {
+    showMessage(
+        "Invalid phone number. Please enter a valid phone number for your selected country, without the country calling code."
+    );
+    return;
+}
+
 
     if (password.length < 8) {
         showMessage("Your password must contain at least 8 characters.");
@@ -348,8 +367,17 @@ document.getElementById("reviewButton").addEventListener("click", function () {
             ? selectedCountry.flag + " " + selectedCountry.name
             : "Not selected";
 
-    document.getElementById("reviewPhone").textContent =
-        (selectedCountry ? selectedCountry.callingCode + " " : "") + phone;
+    
+const parsedReviewPhone = parsePhoneNumberFromString(
+    phone,
+    selectedCountry.alpha2
+);
+
+document.getElementById("reviewPhone").textContent =
+    parsedReviewPhone
+        ? parsedReviewPhone.formatInternational()
+        : phone;
+
 
     // Display business information
     document.getElementById("reviewBusiness").textContent = businessName;

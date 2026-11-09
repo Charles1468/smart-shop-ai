@@ -152,12 +152,27 @@
 
                     <div id="countryResults"></div>
 
-                    <label>Phone Number</label>
-                    <div class="phone-field">
-                        <span id="dialCode">+234</span>
-                        <input type="tel" id="phone"
-                               placeholder="Phone number">
-                    </div>
+                    
+<label>Phone Number</label>
+
+<div class="phone-field">
+    <span id="dialCode" class="dial-code"></span>
+
+    <input
+        type="tel"
+        id="phone"
+        placeholder="Enter your phone number"
+        autocomplete="tel-national"
+        inputmode="tel"
+    >
+</div>
+
+<p class="phone-help">
+    Select your country above. Its calling code will
+    appear automatically. Enter your phone number
+    without the country code.
+</p>
+
 
                     <label>Password</label>
                     <div class="password-field">
@@ -430,4 +445,4 @@
     <script type="module" src="app.js"></script>
 
 </body>
-</html>
+</html>          
